@@ -17,6 +17,10 @@ import java.util.Scanner;
  * @version 180823
  */
 public final class Jsh {
+    // Recupera informações para se exibir no prompt
+    public static String user_name = System.getProperty("user.name");
+    public static String dir_name = System.getProperty("user.dir");
+    public static String uid;
     
     /**
     * Funcao principal do Jsh.
@@ -35,8 +39,12 @@ public final class Jsh {
     * terminal está pronto para receber o próximo comando como entrada.
     */
     public static void exibirPrompt() {
+        // recuperando UID do usuário
+        uid = Library.getUID();
 
-        throw new RuntimeException("Método ainda não implementado.");
+        // construindo e printando prompt
+        String prompt = "\n" + user_name + "#" + uid + ":" + dir_name + "\n->";
+        System.out.print(prompt);
     }
 
     /**
