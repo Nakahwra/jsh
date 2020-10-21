@@ -89,6 +89,10 @@ public final class Jsh {
             case "relogio":
                 ComandosInternos.exibirRelogio();
                 break;
+                
+            case "la":
+              ComandosInternos.escreverListaArquivos(Optional.of(dir_name));
+              break;
         }
     }
 

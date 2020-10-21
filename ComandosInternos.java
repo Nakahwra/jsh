@@ -31,7 +31,31 @@ public final class ComandosInternos {
     }
     
     public static int escreverListaArquivos(Optional<String> nomeDir) {
-        throw new RuntimeException("Método ainda não implementado");
+        try {
+            // Instanciando diretório atual
+            File currentDir = new File(nomeDir.get());
+            // Criando lista do conteúdo presente no diretório atual
+            File[] listDir = currentDir.listFiles();
+    
+            // Printando cada conteúdo da lista
+            for (File dir : listDir) {
+                if(dir.isDirectory()) {
+                    System.out.print(dir.getName() + "/  ");
+                } else {
+                    System.out.print(dir.getName() + "  ");
+                }
+            }
+    
+            // meramente quebra de linha
+            System.out.println();
+    
+            return 0;
+
+        } catch(Exception error) {
+
+            Library.printError(error);
+            return 1;
+        }
     }
     
     public static int criarNovoDiretorio(String nomeDir) {
