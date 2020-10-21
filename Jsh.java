@@ -108,11 +108,56 @@ public final class Jsh {
           String moveToDir = comando.getArgumentos().get(0);
           ComandosInternos.mudarDiretorioTrabalho(moveToDir);
           break;
+        
+        default:
+          executarPrograma(comando);
+          break;
         }
     }
 
     public static int executarPrograma(ComandoPrompt comando) {
-        throw new RuntimeException("Método ainda não implementado.");
+      int exitCode;
+        
+      try {
+          
+          String command = comando.getNome();
+
+          // verifica se existe e recupera o programa no diretório
+          File program = Library.getProgram(command);
+
+          // Se nenhum programa for retornado, lança exceção
+          if(program == null) throw new Exception("Programa não existe.");
+          // Valida se o programa tem permissão de execução, se não, lança erro.
+          if(!program.canExecute()) throw new Exception("Programa não tem permissão para executar.");
+
+          // Instanciando criador de processos
+          ProcessBuilder processBuilder = new ProcessBuilder(program.getAbsolutePath());
+          // Criando processo
+          Process process = processBuilder.start();
+          
+          // Esperando programa executar e recuperando exit code.
+          exitCode = process.waitFor();
+
+          // Se o exit code for diferente de 0, lança exceção
+          if(exitCode != 0) throw new Exception("Programa terminado em erro.");
+          
+          // Lendo o input stream
+          byte[] output = process.getInputStream().readAllBytes();
+          // Transformando input stream em String
+          String outputStr = new String(output);
+          
+          // Printando a execução do programa
+          System.out.println(outputStr);
+
+          // retornando exit code
+          return exitCode;
+
+      } catch (Exception error) {
+          Library.printError(error);
+          exitCode = 1;
+          return exitCode;
+      }
+      
     }
     
     
