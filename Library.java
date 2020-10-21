@@ -6,38 +6,44 @@ import java.io.File;
 import java.io.FileInputStream;
 
 public class Library {
-    public static String getUID() {
-        String uid = "";
+  public static String getUID() {
+    String uid = "";
 
-        try {
-            // comando para pegar UID
-            String command = "id -u " + Jsh.user_name;
+    try {
+        // comando para pegar UID
+        String command = "id -u " + Jsh.user_name;
 
-            // Executando comando
-            Process executeCommand = Runtime.getRuntime().exec(command);
-            InputStream result = executeCommand.getInputStream();
+        // Executando comando
+        Process executeCommand = Runtime.getRuntime().exec(command);
+        InputStream result = executeCommand.getInputStream();
 
-            // Armazenando resultado do comando na var. uid
-            int c;
-            while ((c = result.read()) != -1) {
-                uid += (char)c;
-            }
-            result.close();
-
-            // formatando resultado
-            uid = uid.replaceAll("\n", "");
-
-            return uid;
-
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("ERRO: não foi possível recuperar UID");
-            return "";
+        // Armazenando resultado do comando na var. uid
+        int c;
+        while ((c = result.read()) != -1) {
+            uid += (char)c;
         }
+        result.close();
+
+        // formatando resultado
+        uid = uid.replaceAll("\n", "");
+
+        return uid;
+
+    } catch (IOException e) {
+        e.printStackTrace();
+        System.out.println("ERRO: não foi possível recuperar UID");
+        return "";
     }
+  }
     
     // método para exibição de erro
-    public static void printError(Exception error) {
-        System.out.println("ERRO: " + error.getMessage());
-    }
+  public static void printError(Exception error) {
+    System.out.println("ERRO: " + error.getMessage());
+  }
+
+  public static File dirPath(String dirName) {
+    String path = Jsh.dir_name + "/" + dirName;
+    
+    return new File(path);
+  }
 }

@@ -59,7 +59,15 @@ public final class ComandosInternos {
     }
     
     public static int criarNovoDiretorio(String nomeDir) {
-        throw new RuntimeException("Método ainda não implementado");
+      File newDirPath = Library.dirPath(nomeDir);
+
+      if(newDirPath.exists() && newDirPath.isDirectory()) {
+          System.out.println("\nAVISO: Diretório já existe.");
+          return 1;
+      }
+      
+      newDirPath.mkdir();
+      return 0;
     }
     
     public static int apagarDiretorio(String nomeDir) {
