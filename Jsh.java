@@ -103,6 +103,11 @@ public final class Jsh {
           String dirToRemove = comando.getArgumentos().get(0);
           ComandosInternos.apagarDiretorio(dirToRemove);
           break;
+
+        case "mdt":
+          String moveToDir = comando.getArgumentos().get(0);
+          ComandosInternos.mudarDiretorioTrabalho(moveToDir);
+          break;
         }
     }
 

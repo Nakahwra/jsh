@@ -83,7 +83,15 @@ public final class ComandosInternos {
     }
     
     public static int mudarDiretorioTrabalho(String nomeDir){
-        throw new RuntimeException("Método ainda não implementado");
+      File moveToDir = new File(nomeDir);
+
+      if(!moveToDir.isDirectory() || !moveToDir.exists()) {
+          System.out.println("\nAVISO: Argumento inválido.");
+          return 1;
+      }
+
+      Jsh.dir_name = nomeDir;
+      return 0;
     }
     
     /**
