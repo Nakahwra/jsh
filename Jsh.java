@@ -58,8 +58,14 @@ public final class Jsh {
     * @return 
     */
     public static ComandoPrompt lerComando() {
+        // Instanciando scanner e recebendo o comando inserido pelo usuário
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
 
-        throw new RuntimeException("Método ainda não implementado.");
+        // Instancia classe de comando
+        ComandoPrompt commandPrompt = new ComandoPrompt(input);
+        return commandPrompt;
+
     }
 
     /**
