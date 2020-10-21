@@ -82,22 +82,27 @@ public final class Jsh {
     public static void executarComando(ComandoPrompt comando) {
       switch (comando.getNome()) {
 
-            case "encerrar":
-                System.out.println("\nEncerrando terminal...");
-                System.exit(0);
-                
-            case "relogio":
-                ComandosInternos.exibirRelogio();
-                break;
+        case "encerrar":
+            System.out.println("\nEncerrando terminal...");
+            System.exit(0);
+            
+        case "relogio":
+            ComandosInternos.exibirRelogio();
+            break;
 
-            case "la":
-              ComandosInternos.escreverListaArquivos(Optional.of(dir_name));
-              break;
+        case "la":
+          ComandosInternos.escreverListaArquivos(Optional.of(dir_name));
+          break;
 
-            case "cd":
-              String newDirName = comando.getArgumentos().get(0);
-              ComandosInternos.criarNovoDiretorio(newDirName);
-              break;
+        case "cd":
+          String newDirName = comando.getArgumentos().get(0);
+          ComandosInternos.criarNovoDiretorio(newDirName);
+          break;
+
+        case "ad":
+          String dirToRemove = comando.getArgumentos().get(0);
+          ComandosInternos.apagarDiretorio(dirToRemove);
+          break;
         }
     }
 

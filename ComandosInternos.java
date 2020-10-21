@@ -71,8 +71,15 @@ public final class ComandosInternos {
     }
     
     public static int apagarDiretorio(String nomeDir) {
+      File dirToRemovePath = Library.dirPath(nomeDir);
 
-        throw new RuntimeException("Método ainda não implementado");
+      if(!dirToRemovePath.exists() || !dirToRemovePath.isDirectory()) {
+          System.out.println("\nAVISO: Argumento de remoção inválido.");
+          return 1;
+      }
+
+      dirToRemovePath.delete();
+      return 0;
     }
     
     public static int mudarDiretorioTrabalho(String nomeDir){
