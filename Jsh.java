@@ -80,7 +80,13 @@ public final class Jsh {
     * programa desconhecido.
     */
     public static void executarComando(ComandoPrompt comando) {
-        throw new RuntimeException("Método ainda não implementado.");
+      switch (comando.getNome()) {
+
+            case "encerrar":
+                System.out.println("\nEncerrando terminal...");
+                System.exit(0);
+
+        }
     }
 
     public static int executarPrograma(ComandoPrompt comando) {
