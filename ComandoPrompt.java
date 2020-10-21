@@ -12,9 +12,15 @@ import java.util.Collections;
  */
 public class ComandoPrompt {
     
-    public ComandoPrompt(String comando) {
-        // ESCREVA AQUI SEU CODIGO PARA ESTRUTURAR O COMANDO RECEBIDO DO PROMPT.
-        throw new RuntimeException("Método ainda não implementado");
+    public ComandoPrompt(String command) {
+        // separação entre comandos e argumentos
+        String[] inputtedCmd = Library.getCommand(command);
+
+        // se argumentos foram inseridos, os guarda no array de argumentos.
+        this.argumentos = (inputtedCmd.length > 1) ? Library.getArguments(inputtedCmd[1]) : null;
+
+        // seta o comando no atributo nome
+        this.nome = inputtedCmd[0];
     }
     
     /**
