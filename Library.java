@@ -35,4 +35,9 @@ public class Library {
             return "";
         }
     }
+    
+    // método para exibição de erro
+    public static void printError(Exception error) {
+        System.out.println("ERRO: " + error.getMessage());
+    }
 }
