@@ -85,7 +85,10 @@ public final class Jsh {
             case "encerrar":
                 System.out.println("\nEncerrando terminal...");
                 System.exit(0);
-
+                
+            case "relogio":
+                ComandosInternos.exibirRelogio();
+                break;
         }
     }
 
