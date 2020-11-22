@@ -6,7 +6,7 @@
 
   <groupId>br.unifil.dc.sisop</groupId>
   <artifactId>jsh-maven</artifactId>
-  <version>1.3.0</version>
+  <version>1.5.0-SNAPSHOT</version>
 
   <name>jsh-maven</name>
   <!-- FIXME change it to the project's website -->
